@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ja">
+<!-- 最初の設定は終わっています　必要な方は触ってください -->
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>チーズアカデミー</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="./slick/slick.css">
+  <link rel="stylesheet" href="./slick/slick-theme.css">
+  <script src="./js/jquery-3.6.0.min.js"></script>
+    <!-- jqueryを読み込んでからslickを読み込む -->
+  <script type="text/javascript" src="slick/slick.min.js"></script>
+</head>
+<!-- 最初の設定は終わっています　必要な方は触ってください -->
+
+<body>
+  <div class="container">
+    <!-- この中に記述していく -->
+    <!-- ここから下にコードを書く -->
+    <header clasas="header">
+      <div class="header__wrapper">
+        <div class="header__image">
+          <span class="font-round_header "><a href="#"><img src="./img/header_logo.png" alt="ヘッダーロゴ"></a></span>
+        </div>
+        <button class="btn-trigger__open">
+          <svg viewBox="0 0 44 44" xmlns:xlink="http://www.w3.org/1999/xlink" role="img" aria-labelledby="menuButtonTitle">
+                <title id="menuButtonTitle">Menu</title>
+                  <symbol id="bar">
+                    <rect width="28" height="2" fill="#f0f0f0"></rect>
+                  </symbol>
+                  <use xlink:href="#bar" x="8" y="14"></use>
+                  <use xlink:href="#bar" x="8" y="24"></use>
+                  <use xlink:href="#bar" x="8" y="34"></use>
+                </svg>
+        </button>
+        <nav class="header-nav">
+          <button class="btn-trigger__colse">
+          <svg viewBox="0 0 44 44" xmlns:xlink="http://www.w3.org/1999/xlink" role="img" aria-labelledby="menuButtonTitle">
+                <title id="menuButtonTitle">Menu</title>
+                  <symbol id="bar">
+                    <rect width="28" height="2" fill="#f0f0f0"></rect>
+                  </symbol>
+                  <use xlink:href="#bar" x="8" y="14"></use>
+                  <use xlink:href="#bar" x="8" y="24"></use>
+                  <use xlink:href="#bar" x="8" y="34"></use>
+                </svg>
+        </button>
+          <ul class="header__list">
+            <li class="header__item"><span class="font-round"><a href="#About">About</a></span></li>
+            <li class="header__item"><span class="font-round"><a href="#Course">Course</a></span></li>
+            <li class="header__item"><span class="font-round"><a href="#NEWS">NEWS</a></span></li>
+            <li class="header__item"><span class="font-round"><a href="#Access">Access</a></span></li>
+            <li class="header__item"><span class="font-round"><a href="#Contact">Contact</a></span></li>
+            <li class="header__item"><span class="font-round"><a href="./test.html">tagcloud</a></span></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <div class="hero-image__wrapper">
+      <div class="hero-image__img">
+          <!-- <img src="./img/mainbg.png" alt="メインロゴ"> -->
+        <div class="hero__content">
+          <h1 class="main-title">今を「かたち」に</h1>
+          <p class="sub-title">もっと気軽に今、残したい瞬間を写真に残しませんか？</p>
+        </div>
+      </div>
+    </div>
+
+    <main>
+      <section id="#tagcloud">
+        <div class="tagcloud__wrapper">
+          <h2 class="tagcloud__ttl"><a href="./tagcloud.html" target="_blank" class="btn-border btn-border-shadow">Tagcloud</a></h2>
+        </div>
+
+        <div class="tag-cloud" id="tagCloud">
+        <!-- タグクラウドの要素はここに追加されます -->
+        </div>
+          <input type="text" class="tag-input" id="tagInput" placeholder="キーワードを入力してEnterを押してください">
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <small class="copyrights">
+        copyrights 2016 Cheeese Academy Tokyo All RIghts Reserved.
+      </small>
+    </footer>
+    </div>
+
+  <!-- ここから上にコードを書く -->
+  <!-- この中に記述していく -->
+  <!-- <script src="https://code.jquery.com/jquery-3.2.1.min.js"></scrip>
+  <script src="js/main.js"></script> -->
+
+  <script>
+    // ハンバーガーメニュー
+    $(function() {
+      $(".btn-trigger__open").click(function() {
+    // 表示に設定
+      $(".header-nav").css("display", "block");
+    });
+    $(".btn-trigger__close").click(function() {
+      // 非表示に設定
+      $(".header-nav").css("display", "none");
+  })});
+  </script>
+
+  <script>
+    // タグクラウドの要素を取得
+    const tagCloud = document.getElementById('tagCloud');
+    // テキストボックスの要素を取得
+    const tagInput = document.getElementById('tagInput');
+
+    // キーワードをタグクラウドに追加する関数
+    function addTag() {
+    // テキストボックスの値を取得
+    const keyword = tagInput.value;
+    if (keyword.trim() !== '') {
+    // キーワードをタグとして追加
+      const tag = document.createElement('div');
+      tag.className = 'tag';
+      tag.textContent = keyword;
+      tag.addEventListener('click', function() {
+    // クリックされたタグを削除
+      tag.remove();
+    });
+      tagCloud.appendChild(tag);
+    // テキストボックスをクリア
+      tagInput.value = '';
+      }
+    }
+
+    // テキストボックスでEnterキーが押された場合にタグを追加
+    tagInput.addEventListener('keydown', function(event) {
+      if (event.key === 'Enter') {
+        event.preventDefault();
+        addTag();
+      }
+    });
+    </script>
+
+</body>
+
+</html>

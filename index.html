@@ -24,6 +24,10 @@
   <div class="container">
     <!-- この中に記述していく -->
     <!-- ここから下にコードを書く -->
+    <!-- <div class="catchcopy__action">
+      <p>今をかたちに残しませんか？</p>
+    </div> -->
+
     <header clasas="header">
       <div class="header__wrapper">
         <div class="header__image">
@@ -58,7 +62,7 @@
             <li class="header__item"><span class="font-round"><a href="#NEWS">NEWS</a></span></li>
             <li class="header__item"><span class="font-round"><a href="#Access">Access</a></span></li>
             <li class="header__item"><span class="font-round"><a href="#Contact">Contact</a></span></li>
-            <li class="header__item"><span class="font-round"><a href="#tagcloud">tagcloud</a></span></li>
+            <li class="header__item"><span class="font-round"><a href="./tagcloud1.html">tagcloud</a></span></li>
           </ul>
         </nav>
       </div>
@@ -274,7 +278,11 @@
           <h2 class="tagcloud__ttl"><a href="./tagcloud.html" target="_blank" class="btn-border btn-border-shadow">Tagcloud</a></h2>
         </div>
         </div>
-      </section>
+
+        <div class="tag-cloud" id="tagCloud">
+        <!-- タグクラウドの要素はここに追加されます -->
+      </div>
+      <input type="text" class="tag-input" id="tagInput" placeholder="キーワードを入力してEnterを押してください">
     </main>
 
     <footer class="footer">
@@ -286,9 +294,19 @@
 
   <!-- ここから上にコードを書く -->
   <!-- この中に記述していく -->
-  <!-- <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <!-- <script src="https://code.jquery.com/jquery-3.2.1.min.js"></scrip>
   <script src="js/main.js"></script> -->
 
+  <!-- <script>
+    $(function() {
+      setTimeout(function(){
+      $('.catchcopy__action p').fadeIn(2000);
+      },500); //0.5秒後にロゴをフェードイン!
+      setTimeout(function(){
+        $('.catchcopy__action').fadeOut(2500);
+      },2500); //2.5秒後にロゴ含め真っ白背景をフェードアウト！
+    });
+  </script> -->
   <script>
     // ハンバーガーメニュー
     $(function() {
@@ -332,6 +350,40 @@
     ]
     });
   </script>
+
+  <script>
+        // タグクラウドの要素を取得
+        const tagCloud = document.getElementById('tagCloud');
+        // テキストボックスの要素を取得
+        const tagInput = document.getElementById('tagInput');
+
+        // キーワードをタグクラウドに追加する関数
+        function addTag() {
+            // テキストボックスの値を取得
+            const keyword = tagInput.value;
+            if (keyword.trim() !== '') {
+                // キーワードをタグとして追加
+                const tag = document.createElement('div');
+                tag.className = 'tag';
+                tag.textContent = keyword;
+                tag.addEventListener('click', function() {
+                    // クリックされたタグを削除
+                    tag.remove();
+                });
+                tagCloud.appendChild(tag);
+                // テキストボックスをクリア
+                tagInput.value = '';
+            }
+        }
+
+        // テキストボックスでEnterキーが押された場合にタグを追加
+        tagInput.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                addTag();
+            }
+        });
+    </script>
 
 </body>
 

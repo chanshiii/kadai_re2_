@@ -45,6 +45,29 @@ img {
     margin: 0 auto;
 }
 
+/* .catchcopy__action {
+	background: #04cbf8c0;
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	z-index: 9000;
+}
+.catchcopy__action p {
+    font-size: 2.3rem;
+    color: #058842;
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	display: none;
+	z-index: 9999;
+	width: 100%;
+    font-size: 50px;
+    text-align: center;
+} */
+
 /*---------------------
 *header
 ---------------------*/
@@ -553,7 +576,7 @@ a.btn-border-shadow:hover:before {
 *Contact
 ---------------------*/
 .contact {
-    margin: 60px 0 140px;
+    margin: 60px 0 40px;
 }
 
 .contact__wrapper {
@@ -664,16 +687,25 @@ input[type*="submit"]{
 /*---------------------
 *tagcloud
 ---------------------*/
-.tagcloud {
-    margin: 20px 0;
+.tag-cloud {
+    display: flex;
+    flex-wrap: wrap;
 }
 
-.tagcloud__title {
-    font-size: 2.4rem;
+.tag-cloud .tag {
+    padding: 5px 10px;
+    background-color: #f2f2f2;
+    margin: 5px;
+    cursor: pointer;
 }
 
-.tagcloud__title>a {
-    text-decoration: none;
+.tag-cloud .tag:hover {
+    background-color: #e0e0e0;
+}
+
+/* テキストボックスのスタイル */
+.tag-input {
+    margin-bottom: 10px;
 }
 
 /*---------------------
@@ -688,6 +720,13 @@ input[type*="submit"]{
     color: #ffffff;
 }
 
+/*---------------------
+*test.html css
+---------------------*/
+
+.tagcloud__ttl>a{
+    margin: 40px 0 0;
+}
 
 @media screen and (max-width:680px) {
     body {
